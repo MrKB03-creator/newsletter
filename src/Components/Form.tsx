@@ -46,29 +46,38 @@ function Form() {
               </ul>
               <div>
                 <div className=" pb-3" id="input">
-                  <label
-                    htmlFor="email"
-                    className="block text-[.7rem] font-display text-black font-bold "
-                  >
-                    Email address
-                  </label>
+                  <div>
+                    <div className="flex justify-between pb-1">
+                      <label
+                        htmlFor="email"
+                        className="block text-[.7rem] font-display text-black font-bold "
+                      >
+                        Email address
+                      </label>
+                      <span
+                        className={`text-red-500 text-[.7rem] ${
+                          isEmailValid ? "invisible" : "visible"
+                        }`}
+                      >
+                        Please enter a valid email address
+                      </span>
+                    </div>
+                  </div>
+
                   <input
                     type="email"
                     id="email"
-                    autoComplete="email"
                     required
                     placeholder="email@company.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="peer border border-secondary w-full rounded-lg h-12  focus:ring-blue-500 focus:border-blue-500 p-5 text-sm "
-                  />
-                  <span
-                    className={`text-red-500 text-sm ${
-                      isEmailValid ? "invisible" : "visible"
+                    className={`peer border w-full rounded-lg h-12 p-5 text-sm focus:outline-none focus:ring-1 ${
+                      isEmailValid
+                        ? "border-secondary focus:ring-blue-500 focus:border-blue-500"
+                        : "border-red-500 bg-red-200 text-red-500 focus:ring-red-500 focus:border-red-500 placeholder-red-500/50"
                     }`}
-                  >
-                    Please enter a valid email address
-                  </span>
+                  />
+                  
                 </div>
                 <button
                   type="submit"
